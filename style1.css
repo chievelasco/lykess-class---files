@@ -439,3 +439,14 @@ body{
   width: 0;
   transition: 1s ease 0.3s;
 }
+
+/*for the FILE buttons*/
+.exercises_container a {
+  text-decoration: none;
+  color:#297582;
+}
+.exercises_container:hover{
+  background: #A1CCD1;
+  color: #41444B;
+  transition: 0.5s;
+}

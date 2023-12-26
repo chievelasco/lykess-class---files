@@ -16,6 +16,7 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,16 +124,30 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
 
   <section class="home-section">
     <div class="text">Performance Tracker</div>
+    <?php
+                if (mysqli_num_rows($progressResult) > 0) {
+                  while ($progressRow = mysqli_fetch_assoc($progressResult)) {
+                    $week = $progressRow['week'];
+                    $progressPercent = $progressRow['percent'];
+                    $remarks = $progressRow['remark'];
 
+                    ?>
+    <!-- SELECT QUERY FOR FILES -->
+    <?php
+          $conn = mysqli_connect("localhost","root","","kinder_class");
+
+          $sql2 = "SELECT id, weekNum, file_t, file_w, file_a 
+                    FROM files
+                    WHERE weekNum='$week';";
+          $result2 = mysqli_query($conn, $sql2);
+          while($fetch = mysqli_fetch_assoc($result2))
+          {
+            echo "";
+
+        ?>
     <div class="weekly_container">
-      <?php
-      if (mysqli_num_rows($progressResult) > 0) {
-        while ($progressRow = mysqli_fetch_assoc($progressResult)) {
-          $week = $progressRow['week'];
-          $progressPercent = $progressRow['percent'];
-          $remarks = $progressRow['remark'];
 
-          ?>
+
           <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
             <h2>  <?php echo "WEEK" . $week ?> </h2>
@@ -143,7 +158,7 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
             <div class="weekly_pt">
               <div class="exercises_pt">
                 <div class="exercises_container">
-                  <a>
+                  <a href="./<?php echo $fetch['file_t'] ?>" target="_blank" rel="noopener noreferrer">
                     <h3>Topic</h3>
                   </a>
                 </div>
@@ -151,15 +166,15 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
 
               <div class="exercises_pt">
                 <div class="exercises_container">
-                  <a>
-                    <h3>Worksheet</h3>
+                  <a href="./<?php echo $fetch['file_w'] ?>" target="_blank" rel="noopener noreferrer">
+                    <h3>Worksheets</h3>
                   </a>
                 </div>
               </div>
 
               <div class="exercises_pt">
                 <div class="exercises_container">
-                  <a>
+                  <a href="./<?php echo $fetch['file_a'] ?>" target="_blank" rel="noopener noreferrer" style="">
                     <h3>Activities</h3>
                   </a>
                 </div>
@@ -171,25 +186,21 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
                 <h5><span>Remarks:</span> <br> <?php echo $remarks ?> </h5>
               </div>
             </div>
+      </form>
 
-            <?php
+    </div>
+    <?php
+            "";
+                } 
+          ?>
+      <?php
               }
             } else {
               echo "No Grades Input";
             }
             ?>
-            <div class="input-container" style="display: none;">
-              <div>
-                <h5>Total Score</h5>
-                <input type="number" name="inputScore" class="inputScore" id="input-score">
-              </div>
-              <div>
-                <h5>Number of Items</h5>
-                <input type="number" name="inputItem" class="inputItem" id="input-item">
-              </div>
-            </div>
-      </form>
-    </div>
+
+
   </section>
   <script src="scripts.js"></script>
 </body>
