@@ -52,21 +52,21 @@
         <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="perf_tracker_US.php">
+        <a href="performanceTracker.php">
           <i class="fa fa-book"></i>
           <span class="link_name">Performance Tracker</span>
         </a>
         <span class="tooltip">Performance Tracker</span>
       </li>
       <li>
-        <a href="calendar.php">
+        <a href="eventCalendar.php">
           <i class="fa fa-calendar"></i>
           <span class="link_name">Events Calendar</span>
         </a>
         <span class="tooltip">Events Calendar</span>
       </li>
       <li>
-        <a href="profile-real3.php">
+        <a href="profile_setting.php">
           <i class="fa fa-gear"></i>
           <span class="link_name">Profile Settings</span>
         </a>

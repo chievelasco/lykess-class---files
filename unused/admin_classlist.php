@@ -19,7 +19,6 @@ if ($results) {
       $score = $_POST["inputScore"];
       $week = $_POST["inputWeek"];
       $average = $score / $item * 100;
-      $remarks = $_POST["inputRemarks"];
 
 
 
@@ -34,7 +33,7 @@ if ($results) {
           $firstName = $nameRow['stud_fname'];
           $surname = $nameRow['stud_lname'];
 
-          $updateQuery = "UPDATE progress SET percent='$average', item='$item', score='$score', stud_fname='$firstName', stud_lname='$surname', remark='$remarks'
+          $updateQuery = "UPDATE progress SET percent='$average', item='$item', score='$score', stud_fname='$firstName', stud_lname='$surname'
                             WHERE studID_number = '$studentId' AND week = '$week'";
           $results = executesQuery($updateQuery);
         } else {
@@ -48,12 +47,11 @@ if ($results) {
         if ($nameRow = mysqli_fetch_assoc($nameResult)) {
           $firstName = $nameRow['stud_fname'];
           $surname = $nameRow['stud_lname'];
-        $insertQuery = "INSERT INTO progress (studID_number, percent, item, score, week, stud_fname, stud_lname, remark)
-                        VALUES ('$studentId', '$average', '$item', '$score', '$week', '$firstName', '$surname', $remarks)";
-        $results = executesQuery($insertQuery);
+          $insertQuery = "INSERT INTO progress (studID_number, percent, item, score, week, stud_fname, stud_lname)
+                        VALUES ('$studentId', '$average', '$item', '$score', '$week', '$firstName', '$surname')";
+          $results = executesQuery($insertQuery);
+        }
       }
-      
-    }
       $_SESSION["username"] = $studentId;
 
       header("Location: classList.php");
@@ -62,8 +60,7 @@ if ($results) {
 
   }
 }
-
-/*if (isset($_POST["remark-btn"])) {
+if (isset($_POST["remark-btn"])) {
   $remark = $_POST['remark'];
   $studentIdForRemarks = $_POST['student_id_for_remarks'];
 
@@ -80,10 +77,10 @@ if ($results) {
 
   header("Location: classList.php");
   exit();
-} */
-
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,12 +89,24 @@ if ($results) {
   <title>Responsive Sidebar</title>
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style4.css">
   <link rel="stylesheet" href="mainstyles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-    .progressbar-rate{
+    .inputWeek{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    border: 2px solid #41444B;
+    margin: auto;
+    padding-left: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+  }
+  .progressbar-rate{
       display: flex;
       justify-content: center;
       background-image: repeating-linear-gradient(to left, #FFD89C, #F1C27B, #E9B384);
@@ -109,47 +118,6 @@ if ($results) {
       width: 0;
       transition: 1s ease 0.3s;
     }
-    .website-logo{
-      width: 50px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      transition: all .5s ease;
-    }
-    .sidebar.open .website-logo{
-      width: 200px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-top: -95px;
-      transition: all .5s ease;
-    }
-    .inputWeek{
-      display: flex;
-      width: 50%;
-      justify-content: space-evenly;
-      width: 200px;
-      height: 30px;
-      border-radius: 15px;
-      border: 2px solid #41444B;
-      margin: auto;
-      padding-left: 15px;
-      padding: 15px;
-      background-color: #f9f9f9;
-    }
-
-    textarea {
-      width: 100%;
-      height: 100px;
-      padding: 12px 20px;
-      box-sizing: border-box;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      background-color: #f8f8f8;
-      font-size: 16px;
-      resize: none;
-    }
-    
   </style>
 </head>
 
@@ -158,39 +126,38 @@ if ($results) {
     <div class="logo_details">
       <i class="fa fa-navicon" id="btn"></i>
     </div>
-    <img src="https://i.ibb.co/9gPHTr8/kinder-class-logo-1.png" class="website-logo"> 
     <ul class="nav-list">
 
       <li>
-        <a href="admin_home.php" class="active">
+        <a href="home.php" class="active">
           <i class="fa fa-home"></i>
           <span class="link_name">Home</span>
         </a>
         <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="classList.php">
+        <a href="class_list.php">
           <i class="fa fa-address-book"></i>
           <span class="link_name">Class List</span>
         </a>
         <span class="tooltip">Class List</span>
       </li>
       <li>
-        <a href="uploadFile.php">
+        <a href="perf_tracker_US.php">
           <i class="fa fa-book"></i>
           <span class="link_name">Performance Tracker</span>
         </a>
         <span class="tooltip">Performance Tracker</span>
       </li>
       <li>
-        <a href="calendar_admin.php">
+        <a href="">
           <i class="fa fa-calendar"></i>
           <span class="link_name">Events Calendar</span>
         </a>
         <span class="tooltip">Events Calendar</span>
       </li>
       <li>
-        <a href="#">
+        <a href="profile real.php">
           <i class="fa fa-gear"></i>
           <span class="link_name">Settings</span>
         </a>
@@ -198,6 +165,7 @@ if ($results) {
       </li>
       <li class="profile">
         <div class="profile_details">
+          <img src="profile.jpeg" alt="profile image">
           <div class="profile_content">
             <div class="name">Anna Jhon</div>
             <div class="designation">Admin</div>
@@ -212,10 +180,9 @@ if ($results) {
     <div class="grid auto-fit">
 
       <?php
-
-        $query = "SELECT * FROM reg_info";
-        $results = mysqli_query($conn, $query);
-        if ($results) {
+      $query = "SELECT * FROM reg_info";
+      $results = mysqli_query($conn, $query);
+      if ($results) {
         while ($row = mysqli_fetch_assoc($results)) {
           $firstName = $row['stud_fname'];
           $mname = $row['stud_mname'];
@@ -238,13 +205,13 @@ if ($results) {
           if ($none == 'yes' || $none == 'Yes') {
             $conditions[] = 'No health conditions specified';
           } else {
-            if ($asthma == 'yes' || $asthma == 'Yes') {
+            if ($asthma == 'yes') {
               $conditions[] = 'Asthma';
             }
-            if ($eyesight == 'yes' || $eyesight == 'Yes') {
+            if ($eyesight == 'yes') {
               $conditions[] = 'Eyesight';
             }
-            if ($epilepsy == 'yes' || $epilepsy == 'Yes') {
+            if ($epilepsy == 'yes') {
               $conditions[] = 'Epilepsy';
             }
             if ($allergy != 'None') {
@@ -281,8 +248,8 @@ if ($results) {
                 </div>
               </div>
 
-              <button id="calcBtn" class="calcBtn" name="calcBtn">Grade Calculator</button>
-              <div class="calcmodal" id="calc-modal" name="calcmodal">
+              <button id="calcBtn" class="calcBtn">Grade Calculator</button>
+              <div class="calcmodal" id="calc-modal">
                 <div class="calcmodal-content">
                   <div class="calcmodal-header">
                     <span class="close-calc">&times;</span>
@@ -310,7 +277,7 @@ if ($results) {
                           </div>
                           <div>
                             <h5>Remarks</h5>
-                            <textarea name="inputRemarks" id="inputRemarks" name="inputRemarks" cols="30" rows="10"></textarea>
+                            <input type="text" class="inputRemarks" name="inputRemarks" id="inputRemarks">
                           </div>
                       </div>
                       <button class="progress-btn" id="progress-btn" type="button">Calculate</button>
@@ -365,8 +332,13 @@ if ($results) {
                 </div>
               </div>
             </div>
-            
+            <form method="POST">
+              <input type="hidden" name="student_id_for_remarks" value="<?php echo $idnumber; ?>">
+              <input type="text" class="remark" name="remark" placeholder="Your Remarks">
+              <input type="submit" class="remark-btn" name="remark-btn" value="Save">
+            </form>
           </div>
+
           <?php
         }
       }
@@ -392,13 +364,13 @@ if ($results) {
   </div>
 
 
-
+  </div>
 
   <!-- Scripts -->
   <script src="script1.js"></script>
-  <!-- <script src="scripts.js"></script> -->
+  <script>
 
-  
+  </script>
 </body>
 
 </html>

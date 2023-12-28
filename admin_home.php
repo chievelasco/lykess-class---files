@@ -55,18 +55,18 @@
         <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="classList.php">
+        <a href="admin_classList.php">
           <i class="fa fa-address-book"></i>
           <span class="link_name">Class List</span>
         </a>
         <span class="tooltip">Class List</span>
       </li>
       <li>
-        <a href="uploadFile.php">
+        <a href="admin_academicResources.php">
           <i class="fa fa-book"></i>
-          <span class="link_name">Performance Tracker</span>
+          <span class="link_name">Academic Resources</span>
         </a>
-        <span class="tooltip">Performance Tracker</span>
+        <span class="tooltip">Academic Resources</span>
       </li> 
       <li>
         <a href="admin_eventCalendar.php">
@@ -96,7 +96,7 @@
 
   <section class="home-section">
       <div class="text">Home</div>
-        <div class="grid auto-fit">
+      <div class="grid auto-fit">
           <div class="container">
             <h2>WELCOME!</h2>
             <p>This website will serve as your communication
@@ -136,9 +136,9 @@
           </div>
 
           <div class="container2">
-          <button id="addRuleBtn" class="home_button" onclick="document.getElementById('addRuleModal').style.display='block'" style="width:auto;width:auto;float:right;font-size:15px;">
+            <button id="addRuleBtn" class="home_button" onclick="document.getElementById('addRuleModal').style.display='block'" style="width:auto;width:auto;float:right;font-size:15px;">
             <a><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-plus"></i></a>
-          </button>
+            </button>
             <h3>Home Learning Rules</h3>
             <div class="functions">
             </div>
@@ -152,9 +152,9 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                 ?>
             <ol class="ruleLst" id="ruleLst">
-            <?php echo $row["rule_num"]?>. <?php echo $row["rule"]?>
-            <button id="editRuleBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="indexRuleEdit.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
-            <button id="deleteRuleBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="deleteRule.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
+              <?php echo $row["rule_num"]?>. <?php echo $row["rule"]?>
+              <button id="editRuleBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_editRule.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
+              <button id="deleteRuleBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_deleteRule.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
             </ol>
               <!-- WHILE LOOP CLOSING BRACKET -->
                   <?php
@@ -232,8 +232,8 @@
                       <td><?php echo $row["startTime"]?> - <?php echo $row["endTime"]?></td>
                       <td><?php echo $row["newSched"]?></td>
                       <td>
-                      <button id="editSchedBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="indexSchedEdit.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
-                      <button id="deleteSchedBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="deleteSched.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
+                      <button id="editSchedBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_editSched.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
+                      <button id="deleteSchedBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_deleteSched.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
                       </td>
                   </tbody>
                       <!-- WHILE LOOP CLOSING BRACKET -->
@@ -269,14 +269,14 @@
               <span onclick="document.getElementById('addContactModal').style.display='none'" class="closeR" title="Close Modal">&times;</span>
                   <h2>Insert Contact</h2>
                     <select name="contactType" id="contactType" style="font-size:18px; font-family:'Poppins';width:auto;height:auto;color:#297582;border-radius:10px;padding:10px;border:1px solid #297582;"required>
-                          <option value="facebook">Facebook</option>
-                          <option value="envelope">Email|Gmail</option>
-                          <option value="phone">Phone</option>
-                          <option value="mobile">Mobile</option>
-                          <option value="linkedin">LinkedIn</option>
-                          <option value="instagram">Instagram</option>
-                          <options value="twitter">Twitter</option>
-                          <option value="google">Google</option>.
+                        <option value="facebook">Facebook</option>
+                        <option value="envelope">Email|Gmail</option>
+                        <option value="phone">Phone</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="instagram">Instagram</option>
+                        <options value="twitter">Twitter</option>
+                        <option value="google">Google</option>.
                     </select>
                     <br>
                   <input type="text" id="" name="contactInfo" placeholder="Enter contact">
@@ -304,18 +304,16 @@
                   ?>
                       <ol class="contactLst" id="ruleLst">
                       <i class="fa fa-<?php echo $row["contactType"]?>"> <?php echo $row["contactInfo"]?></i>
-                      <button id="editContactBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="indexContactEdit.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
-                      <button id="deleteContactBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="deleteContact.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
+                      <button id="editContactBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_editContact.php?id=<?php echo $row ['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-edit"></i></a></button> 
+                      <button id="deleteContactBtn" class="home_button" style="width:auto;float:right;font-size:15px;"><a href="admin_deleteContact.php?id=<?php echo $row['id'] ?>"><i style="font-size:20px;float:right;margin-right:5px;color:#fff;" class="fa fa-trash-o"></i></a></button> 
                       </ol>
                   <!-- WHILE LOOP CLOSING BRACKET -->
                   <?php
                      }
                   ?>
           </div>
+
       </div>
-
-
-
   </section>
   <!-- Scripts -->
   <script src="script.js"></script>

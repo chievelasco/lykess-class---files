@@ -79,70 +79,69 @@ $results = mysqli_query($conn, $query);
   </div>
   <section class="home-section">
     <div class="text">Edit Week Files</div>
-    <?php
-    if ($results) {
-      $row = mysqli_fetch_assoc($results);
-      $weekNum = $row["weekNum"];
-      $id = $row["id"];
-      $topics_files = $row["file_t"];
-      $worksheets_files = $row["file_w"];
-      $eactivities_files = $row["file_a"];
+      <?php
+      if ($results) {
+        $row = mysqli_fetch_assoc($results);
+        $weekNum = $row["weekNum"];
+        $id = $row["id"];
+        $topics_files = $row["file_t"];
+        $worksheets_files = $row["file_w"];
+        $eactivities_files = $row["file_a"];
 
-      if (isset($_POST["btn_save"])) {
-        $weekNum = isset($_POST["weekNum"]) ? $_POST["weekNum"] : '';
-        $id = isset($_POST["id"]) ? $_POST["id"] : '';
+        if (isset($_POST["btn_save"])) {
+          $weekNum = isset($_POST["weekNum"]) ? $_POST["weekNum"] : '';
+          $id = isset($_POST["id"]) ? $_POST["id"] : '';
+
+          
+          $topics_tmp = $_FILES["choosefile_topics"]["tmp_name"];
+          $wsheets_tmp = $_FILES["choosefile_worksheets"]["tmp_name"];
+          $eact_tmp = $_FILES["choosefile_eactivities"]["tmp_name"];
 
         
-        $topics_tmp = $_FILES["choosefile_topics"]["tmp_name"];
-        $wsheets_tmp = $_FILES["choosefile_worksheets"]["tmp_name"];
-        $eact_tmp = $_FILES["choosefile_eactivities"]["tmp_name"];
+          $uploadDir = "uploads/";
 
-       
-        $uploadDir = "uploads/";
+          $topics = $uploadDir . basename($_FILES["choosefile_topics"]["name"]);
+          $wsheets = $uploadDir . basename($_FILES["choosefile_worksheets"]["name"]);
+          $eact = $uploadDir . basename($_FILES["choosefile_eactivities"]["name"]);
 
-        $topics = $uploadDir . basename($_FILES["choosefile_topics"]["name"]);
-        $wsheets = $uploadDir . basename($_FILES["choosefile_worksheets"]["name"]);
-        $eact = $uploadDir . basename($_FILES["choosefile_eactivities"]["name"]);
-
-        move_uploaded_file($topics_tmp, $topics);
-        move_uploaded_file($wsheets_tmp, $wsheets);
-        move_uploaded_file($eact_tmp, $eact);
+          move_uploaded_file($topics_tmp, $topics);
+          move_uploaded_file($wsheets_tmp, $wsheets);
+          move_uploaded_file($eact_tmp, $eact);
 
 
-        $query = "UPDATE files 
-                  SET file_t='$topics', file_w='$wsheets', file_a='$eact', weekNum='$weekNum'
-                  WHERE id='$id'";
+          $query = "UPDATE files 
+                    SET file_t='$topics', file_w='$wsheets', file_a='$eact', weekNum='$weekNum'
+                    WHERE id='$id'";
 
-        if (mysqli_query($conn, $query)) {
-          echo '<script type="text/javascript">alert("Edited Successfully!");</script>';
-          header ("Location: uploadFile.php");
-        } else {
-            echo "Error updating record: " . mysqli_error($conn);
+          if (mysqli_query($conn, $query)) {
+            echo '<script type="text/javascript">alert("Edited Successfully!");</script>';
+            header ("Location: admin_academicResources.php");
+          } else {
+              echo "Error updating record: " . mysqli_error($conn);
+          }
         }
       }
-    }
-    ?>
-
-<form action="" method="post" class="addweek_modal_content" enctype="multipart/form-data">
-  <input type="text" name="id" value="<?php echo $id; ?>">
-  <h3>Week Number</h3><input type="text" class="form_control" name="weekNum" value="<?php echo $weekNum; ?>" id="">
-  <h4>Topic</h4>
-  <input class="form-control" type="file" name="choosefile_topics" id="">
-  <h4>Worksheet</h4>
-  <input class="form-control" type="file" name="choosefile_worksheets" id="">
-  <h4>Activities</h4>
-  <input class="form-control" type="file" name="choosefile_eactivities" id="">
-  <div class="col-6 m-auto ">
-    <button type="submit" name="btn_save" class="btn_save">
-      Save
-    </button>
-  </div>
-</form>
+      ?>
+      <form action="" method="post" class="addweek_modal_content" enctype="multipart/form-data">
+        <input type="text" name="id" value="<?php echo $id; ?>">
+        <h3>Week Number</h3><input type="text" class="form_control" name="weekNum" value="<?php echo $weekNum; ?>" id="">
+        <h4>Topic</h4>
+        <input class="form-control" type="file" name="choosefile_topics" id="">
+        <h4>Worksheet</h4>
+        <input class="form-control" type="file" name="choosefile_worksheets" id="">
+        <h4>Activities</h4>
+        <input class="form-control" type="file" name="choosefile_eactivities" id="">
+        <div class="col-6 m-auto ">
+          <button type="submit" name="btn_save" class="btn_save">
+            Save
+          </button>
+        </div>
+      </form>
 
 
-<?php
-    
-    ?>
+      <?php
+          
+          ?>
 
     </div>
   </section>

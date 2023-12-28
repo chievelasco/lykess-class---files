@@ -71,22 +71,6 @@ if (isset($_POST["submit-logs"])) {
     justify-content: center;
   }
 
-  /*.container-fluid {
-    max-width: 90%;
-    height: 112%;
-    width: 100%;
-    background: #fff;
-    left: 50%;
-    top: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    
-  } */
-
   .avatar {
     width: 110px;
     height: 110px;

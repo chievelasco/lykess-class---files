@@ -89,23 +89,6 @@ body{
   text-align: right;
 }
 
-/*.website-logo{
-  width: 50px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  transition: all .5s ease;
-}
-
-.sidebar.open .website-logo{
-  width: 200px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-top: -95px;
-  transition: all .5s ease;
-} */
-
 .sidebar i{
   color:var(--color-white);
   height: 60px;
@@ -554,8 +537,6 @@ input[type=text] {
 
 /* END HOME SECTION CSS */
 
-
-/*ADDED BY CHIENIE*/
 /*RULE FUNCTIONS*/
 .functions {
   text-align: center;
@@ -620,12 +601,6 @@ button.home_button:hover{
   text-decoration: none;
   color:#277699;
 }
-
-/*.editRuleContainer button:hover{
-  background: #2e7380;
-  transition: 0.5s;
-  color: #E9F8FF;
-} */
 
 .closeR,
 .closeS {
@@ -725,12 +700,6 @@ input[type="time"] {
   color:#277699;
 }
 
-/*.editSchedContainer button:hover{
-  background: #2e7380;
-  transition: 0.5s;
-  color: #E9F8FF;
-} */
-
 /*CONTACT CONTAINER*/
 .editContactContainer {
   background-color: #fefefe;
@@ -762,9 +731,3 @@ input[type="time"] {
   text-decoration: none;
   color:#fff;
 }
-
-/*.editContactContainer button:hover{
-  background: #2e7380;
-  transition: 0.5s;
-  color: #E9F8FF;
-} */

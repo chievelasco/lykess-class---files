@@ -5,7 +5,7 @@ $sql = "DELETE FROM files WHERE id ='$id'";
 $result = mysqli_query($con, $sql);
 if($result)
 {
-    header("location: uploadFile.php");
+    header("location: admin_academicResources.php");
 }
 
 ?>

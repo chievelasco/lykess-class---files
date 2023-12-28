@@ -325,9 +325,6 @@ body{
 }
 
 /* PERFORMANCE TRACKER STARTS */
-
-/*ADDED BY CHIENIE*/
-
 /* Float TOPIC WORKSHEET AND ACTIVITIES columns side by side */
 .exercises_pt {
   float: left;

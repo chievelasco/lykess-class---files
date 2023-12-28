@@ -2,7 +2,7 @@
     $dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
-	$db = "kinder_class"; //REPLACE WITH DB NAME
+	$db = "kinder_class"; 
 
 	$conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or die("Connect failed: %s\n". $conn -> error);
 
@@ -16,12 +16,12 @@
 		$dbhost = "localhost";
 		$dbuser = "root";
 		$dbpass = "";
-		$db = "kinder_class"; //REPLACE WITH DB NAME
+		$db = "kinder_class";
 
 		$conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or die("Connect failed: %s\n" . $conn->error);
 
     	$results = mysqli_query($conn, $query);
-
+		
     	// Close the database connection after executing the query
    	 	mysqli_close($conn);
 

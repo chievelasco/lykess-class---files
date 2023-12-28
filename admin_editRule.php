@@ -7,8 +7,8 @@ include "connect2.php";
       //   header("Location: index.php");
       // }
 
-      $schedId = $_GET['id'];
-      $query = "SELECT * FROM class_schedule WHERE id='$schedId'";
+      $ruleId = $_GET['id'];
+      $query = "SELECT * FROM rule WHERE id='$ruleId'";
       $result1 =  mysqli_query($conn, $query);
 
       ?>
@@ -20,6 +20,7 @@ include "connect2.php";
   <link rel="stylesheet" href="style2.css">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <style>
     .website-logo{
       width: 50px;
@@ -47,28 +48,28 @@ include "connect2.php";
     <img src="https://i.ibb.co/9gPHTr8/kinder-class-logo-1.png" class="website-logo"> 
     <ul class="nav-list">
       <li>
-        <a href="index.php" class="active">
+        <a href="admin_home.php" class="active">
           <i class="fa fa-home"></i>
           <span class="link_name">Home</span>
         </a>
         <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="class_list.html">
+        <a href="admin_classList.php">
           <i class="fa fa-address-book"></i>
           <span class="link_name">Class List</span>
         </a>
         <span class="tooltip">Class List</span>
       </li>
       <li>
-        <a href="uploadFile.php">
+        <a href="admin_academicResources.php">
           <i class="fa fa-book"></i>
-          <span class="link_name">Performance Tracker</span>
+          <span class="link_name">Academic Resources</span>
         </a>
-        <span class="tooltip">Performance Tracker</span>
+        <span class="tooltip">Academic Resources</span>
       </li> 
       <li>
-        <a href="calendar_admin.php">
+        <a href="admin_eventCalendar.php">
           <i class="fa fa-calendar"></i>
           <span class="link_name">Events Calendar</span>
         </a>
@@ -102,22 +103,20 @@ include "connect2.php";
           // <!-- EDIT QUERY FOR RULES -->
               if ($result1) {
                 $row = mysqli_fetch_assoc($result1);
-                $schedId = $row["id"];
-                $startTime = $row["startTime"];
-                $endTime = $row["endTime"];
-                $newSched = $row["newSched"];
+                $ruleId = $row["id"];
+                $numRule = $row["rule_num"];
+                $newRule = $row["rule"];
 
 
-                if (isset($_POST["insertEditSched"])) {
-                  $startTime = $_POST["startTime"] ;
-                  $endTime = $_POST["endTime"] ;
-                  $newSched = $_POST["newSched"];
+                if (isset($_POST["insertEditRule"])) {
+                  $numRule = $_POST["numRule"] ;
+                  $newRule = $_POST["newRule"] ;
 
-                  $updatequery = "UPDATE class_schedule 
-                                  SET startTime='$startTime', endTime='$endTime', newSched='$newSched'
-                                  WHERE id='$schedId'";
+                  $updatequery = "UPDATE rule 
+                                  SET rule='$newRule', rule_num='$numRule'
+                                  WHERE id='$ruleId'";
                     if (mysqli_query($conn, $updatequery)) {
-                      echo '<script type="text/javascript">alert("Update Successfully!");</script>';
+                      echo "<script> alert('Update Successfully!'); location.replace('./admin_home.php') </script>";
                       
                   } else {
                       echo "Error updating record: " . mysqli_error($conn);
@@ -126,19 +125,14 @@ include "connect2.php";
               }
 
           ?>
-            <form action=" " method="post" class="editSchedContainer">
-                <h2>Edit Schedule</h2>
-                <label for="newActivity">Start:</label>
-                <input type="time" id="startTime" name="startTime" value="<?php echo $startTime?>">
-                <label for="newActivity">End:</label>
-                <input type="time" id="endTime" name="endTime" value="<?php echo $endTime?>">
-                <br>
-                <label for="duration">Schedule:</label>
-                <input type="text" id="newSched" name="newSched" value="<?php echo $newSched?>">
-                <br>
+            <form action=" " method="post" class="editRuleContainer">
+                  <h2>Edit Rule</h2>
+                  <label for="newActivity">Rule:</label>
+                  <input type="number" id="" name="numRule" value="<?php echo $numRule?>">
+                  <input type="text" id="" name="newRule" value="<?php echo $newRule ?>">
                   <div class="col-6 m-auto ">
-                    <button name="insertEditSched" class="insertEditSched" id="insertEditSched">Save</button>
-                    <button name="insertEditSched" class="insertEditSched"><a href="admin_home.php">Cancel</a></button>
+                    <button type="submit" name="insertEditRule" class="insertEditRule"><a href="admin_home.php">Save</a></button>
+                    <button name="insertEditRule" class="insertEditRule"><a href="admin_home.php">Cancel</a></button>
                   </div>
             </form>
 

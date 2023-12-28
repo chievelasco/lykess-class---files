@@ -49,7 +49,7 @@ if (isset($_POST["edit-save"])) {
   $updateResult = mysqli_query($conn, $query);
 
   if ($updateResult) {
-    header("Location: profile-real3.php");
+    header("Location: profile_setting.php");
     } else {
 
     echo "Error updating record: " . mysqli_error($conn);
@@ -271,7 +271,7 @@ $profileImage = empty($existingProfileImage) || $existingProfileImage === 'defau
         <span class="tooltip">Events Calendar</span>
       </li>
       <li>
-        <a href="profile.php">
+        <a href="profile_setting.php">
           <i class="fa fa-gear"></i>
           <span class="link_name">Profile Settings</span>
         </a>
@@ -479,42 +479,42 @@ $profileImage = empty($existingProfileImage) || $existingProfileImage === 'defau
   </div>
 
 
-<script src="script.js"></script>
-<script>
-  function openEdit() {
-    document.getElementById('my-editmodal').style.display = 'block';
-  }
+    <script src="script.js"></script>
+    <script>
+      function openEdit() {
+        document.getElementById('my-editmodal').style.display = 'block';
+      }
 
-  function closeEdit() {
-    document.getElementById('my-editmodal').style.display = 'none';
-  }
-  function mouseover() {
-    document.getElementById('btn-edit').style.background = "#297582";
-    document.getElementById('btn-edit').style.color = "#fff";
-  }
-  function mouseout() {
-    document.getElementById('btn-edit').style.background = "#fff";
-    document.getElementById('btn-edit').style.color = "#297582";
-  }
+      function closeEdit() {
+        document.getElementById('my-editmodal').style.display = 'none';
+      }
+      function mouseover() {
+        document.getElementById('btn-edit').style.background = "#297582";
+        document.getElementById('btn-edit').style.color = "#fff";
+      }
+      function mouseout() {
+        document.getElementById('btn-edit').style.background = "#fff";
+        document.getElementById('btn-edit').style.color = "#297582";
+      }
 
-</script>
+    </script>
 
-<script>
-  // upload profile  pic js
+    <script>
+      // upload profile  pic js
 
-  document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('btn-change-profile-pic').addEventListener('click', openChangeProfilePicture);
-      document.getElementById('close-profile-pic').addEventListener('click', closeChangeProfilePicture);
-    });
+      document.addEventListener('DOMContentLoaded', function () {
+          document.getElementById('btn-change-profile-pic').addEventListener('click', openChangeProfilePicture);
+          document.getElementById('close-profile-pic').addEventListener('click', closeChangeProfilePicture);
+        });
 
-    function openChangeProfilePicture() {
-      document.getElementById('my-profile-pic-modal').style.display = 'block';
-    }
+        function openChangeProfilePicture() {
+          document.getElementById('my-profile-pic-modal').style.display = 'block';
+        }
 
-    function closeChangeProfilePicture() {
-      document.getElementById('my-profile-pic-modal').style.display = 'none';
-    }
-</script>
+        function closeChangeProfilePicture() {
+          document.getElementById('my-profile-pic-modal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
