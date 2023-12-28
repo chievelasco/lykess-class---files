@@ -137,7 +137,6 @@ createYear = generate_year_range(1970, 2050);
 document.getElementById("year").innerHTML = createYear;
 
 let calendar = document.getElementById("calendar");
-
 let months = [
 	"January",
 	"February",

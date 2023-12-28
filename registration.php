@@ -5,7 +5,6 @@ session_start();
 
 include "connect1.php";
 
-
 if  (isset($_POST["submit-log"]) ){
     $firstName = $_POST["student-firstname"];
     $mname = $_POST["student-midname"];

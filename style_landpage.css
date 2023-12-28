@@ -155,7 +155,6 @@ header{
         gap: 2rem;
     }
 }
-
 @media screen and (min-width: 992px){
     .blog-content{
         grid-template-columns: repeat(3, 1fr);

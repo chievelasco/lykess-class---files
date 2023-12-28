@@ -86,7 +86,6 @@ include "connect2.php";
     </li>
   </ul>
 </div>
-
 <section class="home-section">
     <div class="text">Home</div>
       <div class="grid auto-fit">

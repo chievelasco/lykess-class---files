@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded",function(){
     function openSchModal() {
         modalSched.style.display = "block";
     }
-
     // Function to close the modal
     closeSched.onclick = function () {
         modalSched.style.display = "none";

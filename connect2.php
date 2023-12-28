@@ -11,7 +11,6 @@
 		die("Connection Failed. ". mysqli_connect_error());
 		echo "can't connect to database";
 	}
-
     function executesQuery($query){
 		$dbhost = "localhost";
 		$dbuser = "root";

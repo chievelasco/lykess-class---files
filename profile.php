@@ -15,7 +15,6 @@ $query = "SELECT * FROM reg_info WHERE studID_number = '$userId'";
 $result = mysqli_query($conn, $query) or die("Error in query: " . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result) or die("No user found with the given ID.");
 
-
 $firstName = $row['stud_fname'];
 $mname = $row['stud_mname'];
 $surname = $row['stud_lname'];

@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="style_landpage.css">
     
     </head>
-
     <body>
 
         <!-- header -->

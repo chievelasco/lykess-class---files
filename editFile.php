@@ -140,7 +140,6 @@ $results = mysqli_query($conn, $query);
 
 
       <?php
-          
           ?>
 
     </div>

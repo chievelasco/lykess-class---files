@@ -24,8 +24,6 @@ window.onload = function(){
         }
     }
 }
-
-
 /* VIEW PROFILE MODAL JS */
 
 const modalBtns = document.getElementsByClassName('myBtn');

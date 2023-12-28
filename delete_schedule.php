@@ -17,5 +17,4 @@ if($delete){
     echo "</pre>";
 }
 $conn->close();
-
 ?>

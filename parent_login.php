@@ -130,7 +130,6 @@
         </style>
 
     </head>
-
     <body>
         <div class="login-box">
         <form method="POST" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">

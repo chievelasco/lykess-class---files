@@ -241,7 +241,6 @@ $profileImage = empty($existingProfileImage) || $existingProfileImage === 'defau
     }
   </style>
 </head>
-
 <body>
   <div class="sidebar">
     <div class="logo_details">

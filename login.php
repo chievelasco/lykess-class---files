@@ -143,7 +143,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit-log"])) {
     </style>
 
 </head>
-
 <body>
     <div class="login-box">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">

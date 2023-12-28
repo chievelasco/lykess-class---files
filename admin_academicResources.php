@@ -95,6 +95,7 @@
 
     <section class="home-section">
       <div class="text">Academic Resources</div> 
+      
       <!-- PHP|INSERT QUERY FOR Upload Files -->
         <?php
             if(isset($_POST['btn_save']))

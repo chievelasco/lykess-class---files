@@ -144,6 +144,5 @@ include "connect2.php";
   </section>
   <!-- Scripts -->
   <script src="script.js"></script>
-
 </body>
 </html>

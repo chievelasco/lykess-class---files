@@ -197,8 +197,6 @@ $progressResult = mysqli_stmt_get_result($progressStmt);
               echo "No Grades Input";
             }
             ?>
-
-
   </section>
   <script src="scripts.js"></script>
 </body>

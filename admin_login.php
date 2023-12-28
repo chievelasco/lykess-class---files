@@ -124,8 +124,6 @@ include "connect.php";
             .login-box a:hover {
                 color: #39dc79;
             }
-
-
         </style>
 
     </head>

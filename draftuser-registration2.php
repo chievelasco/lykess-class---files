@@ -20,7 +20,6 @@ if (isset($_POST["submit-logs"])) {
         $occu = $_POST["occupation"];
         $pass = $_POST["password"];
         $conpass = $_POST["confirm-password"];
-
         // Add the data from page 1 to the data from page 2
         $studentData['parent_fullname'] = $fName;
         $studentData['address'] = $add;

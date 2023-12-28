@@ -89,7 +89,6 @@ function updateProgress(index) {
       progressRates[index].innerText = Math.ceil(widthPercentage) + '%';
   }
 }
-
 // Attach click event handlers to the "Calculate" buttons
 progressButtons.forEach((btn, index) => {
   btn.addEventListener("click", function () {

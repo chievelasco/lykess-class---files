@@ -41,7 +41,6 @@ body{
   font-family: var(--font-family);
   background-color: var(--bg-body);
 }
-/*pwedeng ilipat nalang to sa kahit saang style na pang class list*/
 
 .remark-btn{
 	background: var(--color-default);;

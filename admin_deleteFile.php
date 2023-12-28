@@ -7,5 +7,4 @@ if($result)
 {
     header("location: admin_academicResources.php");
 }
-
 ?>

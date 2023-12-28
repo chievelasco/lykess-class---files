@@ -265,8 +265,6 @@ if (isset($_POST["submit-logs"])) {
   const noneCheckbox = document.getElementById("health1");
   const otherCheckboxes = document.querySelectorAll('.form-check1, .form-check2, .form-check3, .form-check4, .form-check5, .form-check6, .form-check8');
   const next = document.getElementById("btnNext");
-
-
   noneCheckbox.addEventListener("change", function () {
     const disableOthers = noneCheckbox.checked;
 

@@ -346,7 +346,6 @@ if ($results) {
         ?>
       </div>
     </section>
-
     <div class="container" id="add-container" style="display: none;">
       <img src="https://i.pinimg.com/564x/fc/7a/1a/fc7a1aee0e1dd7f4acfe8b3347ac27c9.jpg">
       <h4>

@@ -143,7 +143,6 @@ include "connect2.php";
             </form>
 
           <?php
-    
     ?>
           <!-- END OF RULES CONTAINER -->
         </div>
